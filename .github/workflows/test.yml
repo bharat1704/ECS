@@ -2,6 +2,7 @@ name: bun CI Pipeline  # Name of the workflow
 
 on: 
   push:
+  
     branches:
       - main  # Runs when code is pushed to the main branch
   pull_request:
@@ -22,10 +23,10 @@ jobs:
           bun-version: latest 
           
       - name: Install Dependencies
-        run: bun ci  # Installs project dependencies
+        run: bun install  # Installs project dependencies
 
       - name: Run Tests
         run: bun test  # Runs test cases
 
       - name: Build Application
-        run: bun run build  # Builds the project
+        run: bun run build  # Builds the 
