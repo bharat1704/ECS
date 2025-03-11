@@ -1,0 +1,31 @@
+name: bun CI Pipeline  # Name of the workflow
+
+on: 
+  push:
+    branches:
+      - main  # Runs when code is pushed to the main branch
+  pull_request:
+    branches:
+      - main  # Runs when a PR is created or updated
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Runs on the latest Ubuntu runner
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3  # Fetches the repository code
+
+      - name: Set Up Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest 
+          
+      - name: Install Dependencies
+        run: bun ci  # Installs project dependencies
+
+      - name: Run Tests
+        run: bun test  # Runs test cases
+
+      - name: Build Application
+        run: bun run build  # Builds the project
